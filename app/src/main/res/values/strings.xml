@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">GithubUsersDemo</string>
+    <string name="title_user">User</string>
+    <string name="title_mine">Mine</string>
+    <string name="title_info">Info</string>
+    <string name="github_docs">GitHub Docs</string>
+    <string name="mine_follow">%s followers．%s following</string>
+</resources>

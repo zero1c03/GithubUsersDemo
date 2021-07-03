@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="userInfo"
+            type="com.example.weber.githubusersdemo.data.Users" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rl_github_banner"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/mine_docs_bg_color"
+            app:layout_constraintDimensionRatio="H,2:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                style="@style/TextAppearance.MaterialComponents.Headline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawableStart="@drawable/ic_github_mark"
+                android:drawablePadding="?android:attr/listPreferredItemPaddingStart"
+                android:gravity="center"
+                android:text="@string/github_docs"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/rl_mine_icon"
+            android:layout_width="@dimen/mine_image_height"
+            android:layout_height="@dimen/mine_image_height"
+            android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
+            app:imageFromUrl="@{userInfo.avatar_url}"
+            app:layout_constraintBottom_toBottomOf="@+id/rl_github_banner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rl_github_banner" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="?android:attr/listPreferredItemPaddingStart"
+            android:orientation="vertical"
+            android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+            android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rl_mine_icon">
+
+            <TextView
+                android:id="@+id/tv_mine_name"
+                style="@style/TextAppearance.MaterialComponents.Headline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{userInfo.name}" />
+
+            <TextView
+                android:id="@+id/tv_mine_login"
+                style="@style/TextAppearance.MaterialComponents.Headline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{userInfo.login}"
+                android:textColor="?android:attr/textColorSecondary" />
+
+            <TextView
+                android:id="@+id/tv_mine_follow"
+                style="@style/TextAppearance.MaterialComponents.Headline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_people"
+                android:drawablePadding="?android:attr/listPreferredItemPaddingStart"
+                android:text="@{@string/mine_follow(userInfo.followers,userInfo.following)}"
+                android:textColor="?android:attr/textColorSecondary" />
+
+
+            <TextView
+                android:id="@+id/tv_mine_mail"
+                style="@style/TextAppearance.MaterialComponents.Headline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="?android:attr/listPreferredItemPaddingStart"
+                android:text="@{userInfo.email}"
+                android:textColor="?android:attr/textColorSecondary" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
